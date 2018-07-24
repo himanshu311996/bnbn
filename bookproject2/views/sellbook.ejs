@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Fonts Awesome -->
+    <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/animate/animate.css">
+    <title>Sell Book</title>
+    <style>
+        form .form-control{
+            border-color : #ddd;
+            color : black;
+            padding : 0px;
+        }
+        body{
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <%- include ./partials/navbar.ejs %>
+    <%- include ./partials/sidebar.ejs %>
+    
+    <div class="container-fluid" id="main" style="margin-top: 6%;">
+            <%- messages('message',locals) %>
+        <% if(username) { %>
+            
+        <div style="margin-left:5%; margin-right:5%; ">
+                <p style="border-radius:60px;padding-left:15%;letter-spacing: 2px;height:38px;line-height: 2;background-color:#D8BFD8;width:100%;color:#fff;font-weight:700;">This Section Displays the Enteries of Old Books</p>
+            <!-- </div><br><br> -->
+            <!-- <div class="container" style="border-radius:20px;box-shadow: 2px 7px 4px 7px gainsboro;"> -->
+            <form action="/submitsellbook" method="POST" enctype="multipart/form-data" style="border:1px solid #ac8ece; padding:30px; border-radius : 6px;box-shadow: 3px 4px 5px 4px #D8BFD8;background-color: white;">
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select style="border-radius:6px;background-color:white;" name="sellcat" id="" class="form-control">
+                        <% for(var i = 0; i < category.length; i++) { %>
+                            <option value="<%= category[i].name %>"><%= category[i].name %></option>
+                        <% } %>
+                    </select>
+                </div>
+                <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" style="border-radius:6px;" name="selltitle">
+                </div>
+                <div class="form-group">
+                    <label for="language">Language</label>
+                    <input type="text" class="form-control" style="border-radius:6px;" name="selllanguage">
+                </div>
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="text" class="form-control" style="border-radius:6px;" name="sellauthor">
+                </div>
+                <div class="form-group">
+                    <label for="publisher">Publisher</label>
+                    <input type="text" class="form-control" style="border-radius:6px;" name="sellpublisher">
+                </div>
+                <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" class="form-control" style="border-radius:6px;" name="selldescription">
+                </div>
+                <div class="form-group">
+                    <label for="edition">Edition</label>
+                    <input type="text" class="form-control" style="border-radius:6px;" name="selledition">
+                </div>
+                <div class="form-group">
+                        <label for="price">Original Price</label>
+                        <input type="number" class="form-control" style="border-radius:6px;" name="selloprice">
+                </div>
+                <div class="form-group">
+                        <label for="price">Sale Price</label>
+                        <input type="number" class="form-control" style="border-radius:6px;" name="sellsprice">
+                </div>
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <input type="file" class="form-control" id="img" style="border-radius:6px;" name="filetoupload">
+                    <img src="#" alt="" id="imgPreview">
+                </div>
+                <div class="form-group">
+                        <label for="price">Quantity</label>
+                        <input type="number" class="form-control" style="border-radius:6px;" name="sellquan">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Contact Number</label>
+                    <input type="number" class="form-control" style="border-radius:6px;" name="sellcontact">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Add Old Book" style="border-radius:6px;background: linear-gradient(135deg,#ac8ece,#79589f); color: #fff" class="btn btn-success btn-lg">
+                </div>
+            </form>
+        </div>
+        <% } else { %> 
+            <div class="well">
+                <h2>Please LogIn to Sell The Books !</h2>
+            </div>
+         <% } %>
+    </div><br><br>
+    <%- include ./partials/modal_popup.ejs %>
+    
+</body>
+</html>

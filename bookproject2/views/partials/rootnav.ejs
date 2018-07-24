@@ -1,0 +1,47 @@
+<header>
+        <nav style="transition:0.5s;"id="header" class="navbar bookhub-top-nav navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="bookhub-navbar-wrapper">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bookhub-menu">
+                            <span class="sr-only">Toggle Navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>                            
+                        </button>
+                        <a class="navbar-brand" href="/">BOOKHUB</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bookhub-menu">
+                        <ul class="nav navbar-nav">
+                            <li><a style="cursor: pointer;" onclick="openNav()">All Categories</a></li>
+                            <li><a href="#home">HOME</a></li>
+                            <li><a href="#services">SERVICES</a></li>
+                            <li><a href="#about">ABOUT</a></li>
+                            <li><a href="#book">BOOKS</a></li>
+                            <li><a href="#contact">CONTACTUS</a></li>
+                        </ul>
+                    <ul class="nav navbar-nav btnnav">
+                        <% if(username) { %>
+                            <li class="dropdown" ><a style="background-color:rgba(0, 0, 0, 0.1);color:white;cursor: pointer;" data-toggle="dropdown" class="dropdown-toggle;"><%= username %><span class="caret"></span></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a style="color:black;" href="/changepass">Change Password</a></li>
+                                    <li><a style="color:black;" href="/logout">LogOut</a></li>
+                                </ul>
+                            </li>
+                        <% } else { %>
+                            <button style="background : rgba(0, 0, 0, 0.1);" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#signup">SIGNUP</button>
+                            <button style="background : rgba(0, 0, 0, 0.1);" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#login">LOGIN</button>
+                        <% } %>
+
+                        <% if(admin == 1) { %>
+                            <li><a style="color:white;" href="/viewbooks"> AdminView </a></li>
+                            
+                        <% } %>
+                        <!-- <button style="background : rgba(0, 0, 0, 0.1);"type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#admin">ADMIN</button> -->
+ 
+                    </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>

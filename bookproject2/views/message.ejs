@@ -1,0 +1,10 @@
+<div id="messages">
+        <% for (type in messages) { %>
+            <div>
+                <% for(var j = 0 ; j < messages[type].length ; j++ ) { %>
+                    <p class="alert alert-<%= type %>"><%= messages[type][j] %></p>
+                <% } %>
+                </div>
+        <% } %>
+     </div>
+            

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ViewForm</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+            body{
+                
+                background-color:#eee;
+            }
+    </style>
+</head>
+<body style="margin : 0px; padding:0px;">
+        <%- include ./partials/admin_navbar.ejs %>
+        <%- include ./partials/sidebar.ejs %>        
+    
+       <div class="container" style="margin-top: 5%;" id="main">
+            <div class="row">
+                <div class="col-md-8">
+                    <form action="/submitupdatebook/<%= out[0].id %>" method="POST" enctype="multipart/form-data">
+                        <form action="/add" method="POST">
+                            <div class="form-group">
+                            <label for="category" >Category</label>
+                            <select name="category" class="form-control">
+                                <% for(var i=0 ; i<category.length ; i++) { %>
+                                    <option >
+                                        <%= category[i].name %></option>
+                              <% } %>
+                            </select>
+                        </div> 
+                        <div class="form-group">
+                                <label for="title">Title</label>
+                                <input type="text" class="form-control" name="title" value="<%= out[0].title %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="language">Language</label>
+                            <input type="text" class="form-control" name="language" value="<%= out[0].language %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="author">Author</label>
+                            <input type="text" class="form-control" name="author" value="<%= out[0].author %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="publisher">Publisher</label>
+                            <input type="text" class="form-control" name="publisher" value="<%= out[0].publisher %>">
+                        </div>
+                        <div class="form-group">
+                                <label for="description">Description</label>
+                                <input type="text" class="form-control" name="description" value="<%= out[0].description %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="edition">Edition</label>
+                            <input type="text" class="form-control" name="edition" value="<%= out[0].edition %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="price"> Original Price</label>
+                            <input type="number" class="form-control" name="oprice" value="<%= out[0].original_price %>">
+                        </div>
+                        <div class="form-group">
+                                <label for="price">Sale Price</label>
+                                <input type="number" class="form-control" name="sprice" value="<%= out[0].sale_price %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image</label>
+                            <input type="file" class="form-control" name="filetoupload" value="<%= out[0].image %>">
+                        </div>
+                        <div class="form-group">
+                            <input name="Pimage" id="Pimage" value="<%= out[0].image %>" hidden>
+                        </div>
+
+                        <div class="form-group">
+                                <label for="price">Quantity</label>
+                                <input type="number" class="form-control" name="quan" value="<%= out[0].quantity %>">
+                        </div>
+                        <div class="form-group">
+                                <input type="submit" value="Update Book" class="btn btn-warning">
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+</body>
+</html>

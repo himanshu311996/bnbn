@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ViewForm</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+            body{
+                
+                background-color:#eee;
+            }
+        </style>
+</head>
+<body style="margin : 0px; padding:0px;">
+        <%- include ./partials/admin_navbar.ejs %>
+        <%- include ./partials/sidebar.ejs %>
+
+    <br>
+       <div id="main" class="container-fluid" style="margin-top:5%;">
+        <div class="row">
+
+                <div class="col-sm-12 col-sm-2 col-md-2 col-lg-2 ">
+                        <a href="/viewbooks" class="btn btn-success btn-lg">View All categories</a>
+    
+                </div>
+                <div class="container">
+                    <%- messages('message',locals) %>
+                </div>
+                <div class="col-sm-12 col-sm-8 col-md-8 col-lg-8 ">
+                        <p style="background-color:#eeee; border-radius:80px;padding:20px 15px 20px 15px;height : 30px;width:100%;line-height:2px;color: #484848;font-style: italic;font-weight: 600;">You Can Add a New BOOK</p>
+                </div>
+            </div>
+            <div class="panel panel-default" style=" width: 70%;margin-left: 15%;margin-right: 15%;border:1px solid #bbbbbb l;border-radius:10px;box-shadow:5px 3px 8px 6px rgba(20,23,28,.1);margin-top:2%">
+                    <div class="panel panel-heading" style="background-color: #337ab7!important; color:white";>
+                        Add a new Book
+                </div>
+                <div class="panel-body" >
+            <div class="row">
+                <div class="col-md-8">
+                    <form action="/add" method="POST"  enctype="multipart/form-data">
+                        <form action="/add" method="POST">
+                        <div class="form-group">
+                            <label for="category" >Category</label>
+                            <select name="category" class="form-control">
+                                <% for(var i=0 ; i<output.length ; i++) { %>
+                                    <option><%= output[i].name %></option>
+                              <% } %>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                                <label for="title">Title</label>
+                                <input type="text" class="form-control" name="title">
+                        </div>
+                        <div class="form-group">
+                            <label for="language">Language</label>
+                            <input type="text" class="form-control" name="language">
+                        </div>
+                        <div class="form-group">
+                            <label for="author">Author</label>
+                            <input type="text" class="form-control" name="author">
+                        </div>
+                        <div class="form-group">
+                            <label for="publisher">Publisher</label>
+                            <input type="text" class="form-control" name="publisher">
+                        </div>
+                        <div class="form-group">
+                                <label for="description">Description</label>
+                                <input type="text" class="form-control" name="description">
+                        </div>
+                        <div class="form-group">
+                            <label for="edition">Edition</label>
+                            <input type="text" class="form-control" name="edition">
+                        </div>
+                        <div class="form-group">
+                            <label for="price"> Original Price</label>
+                            <input type="number" class="form-control" name="oprice">
+                        </div>
+                        <div class="form-group">
+                                <label for="price">Sale Price</label>
+                                <input type="number" class="form-control" name="sprice">
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image</label>
+                            <input type="file" class="form-control" id="img" name="filetoupload">
+                            <img src="#" alt="" id="imgPreview">
+                        </div>
+                        <div class="form-group">
+                                <label for="price">Quantity</label>
+                                <input type="number" class="form-control" name="quan">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Add Book" class="btn btn-success btn-lg">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+</body>
+</html>

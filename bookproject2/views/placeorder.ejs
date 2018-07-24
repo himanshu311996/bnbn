@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>place order</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Fonts Awesome -->
+    <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/animate/animate.css">
+    <style>
+            .pp{
+          position: absolute;
+          left:-3000px;
+      }
+      body{
+          background-color:#eee;
+      }
+      </style>
+</head>
+
+<body>
+    <%- include ./partials/navbar.ejs %>
+    <%- include ./partials/sidebar.ejs %>
+    
+
+    <div class="container"  id="main" style="margin-top:5%;">
+            <!-- <div class="alert alert-default" style="background:white;border:1px solid #ccc;">Please Fill the credentials for checkout.</div> -->
+            <h1>Order Summary</h1><br><br>
+        
+        <div class="container" style="background-color:white;box-shadow:4px 5px 6px 7px ghostwhite;">
+
+            <form method="POST" style="margin-left:15%; margin-right:15%;padding:60px 20px;">
+                <div class="form-group">
+                    <label for="Phone">Phone No.</label>
+                    <input style="border-color:#eee;color:black;border-radius : 6px;" type="number" name = "phone" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="Address">Address</label>
+                    <input style="border-color:#eee;color:black;border-radius : 6px;" type="text" name = "address" class="form-control" required>
+                </div>
+                    <a href="/books" role="button" class="btn btn-default btn-lg">Continue Shopping</a> &nbsp;&nbsp;               
+                    <!-- <a href="/placeorder" role="button" class="btn btn-warning btn-lg">Place Order</a> -->
+                    <a   id="placeholderbutton" class="btn btn-warning btn-lg">Place Order </a>                
+            </form>
+            <form class="pp" action="https://www.sandbox.paypal.com/in/signin" method="post">
+               
+                        <input type="hidden" name="cmd" value="_cart">
+                        <input type="hidden" name="upload" value="1">
+                        <input type="hidden" name="business" value="rajinder_business@gmail.com">
+                        <% total = 0 %>
+                        <% for(i = 0; i < cart.length ; i++) { %>
+                            <% var qty = parseFloat(cart[i].qty); %>
+                            <% var price =  parseFloat(cart[i].pprice); %> 
+                            <% var sub =  parseFloat(qty * price).toFixed(2); %>   
+                            <% total = parseFloat(parseFloat(total) + parseFloat(qty * price)).toFixed(2); %>  
+                            <% p = i + 1 %>
+                            <input type="hidden" name="item_name_<%= p %>" value="<%=  cart[i].title %>" >
+                            <input type="hidden" name="amount_<%= p %>" value="<%= cart[i].pprice %>" >
+                            <input type="hidden" name="quantity_<%= p %>" value="<%= cart[i].qty %>" >
+                            <% } %>
+                       <input type="hidden" name="currency_code" value="INR">
+                       <input type="hidden" name="amount" value="<%= total %>">
+                       <input type="image" src="http://www.paypal.com/en_US/i/btn/x-click-but01.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+                    </form>
+
+        </div>
+
+    </div>
+    <script>
+            $(document).ready(function(){
+                $('a#placeholderbutton').click(function(e){
+                    console.log("in placehorder ");
+                    e.preventDefault();                    
+                        $('form.pp input[type="image"]').click();
+                        $.post("/placeorder", function(data, status){
+                        alert("Your order is submitted");
+                    });
+                });
+            });
+        </script>
+</body>
+</html>

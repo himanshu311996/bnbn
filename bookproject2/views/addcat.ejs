@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ViewForm</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+            body{
+                
+                background-color:#eee;
+            }
+        </style>
+</head>
+<body style="margin : 0px; padding:0px;">
+        <%- include ./partials/admin_navbar.ejs %>
+        <%- include ./partials/sidebar.ejs %>
+        
+    
+       <div class="container-fluid" id="main" style="margin-top:5%;">
+            <div class="row">
+                    <div class="col-sm-12 col-sm-2 col-md-2 col-lg-2 ">
+                            <a href="/viewcat" class="btn btn-primary btn-lg">View All categories</a>
+        
+                    </div>
+                    <div class="col-sm-12 col-sm-8 col-md-8 col-lg-8 ">
+                            <p style="border-radius: 80px; background: #eeeeee; padding: 20px 15% 20px 15%;width: 100%;height: 30px;line-height: 2%;color: #484848;font-style: italic;                 font-weight: 600;">You Can Add a New Category</p>
+                    </div>
+                </div>  
+            <div class="row">
+                    <div class="col-md-offset-1 col-md-8" style="margin-top:2%;margin-top: 3%; padding: 3%; border:1px solid #eee;border-radius:10px;box-shadow:5px 3px 8px 6px rgba(20,23,28,.1)"
+                    <form action="/submitcat" method="POST">
+                        <form action="/submitcat" method="POST">
+                        <div class="form-group">
+                                <label for="title">Name</label>
+                                <input type="text" class="form-control" name="name">
+                            </div>
+                        <div class="form-group">
+                            <input type="submit" value="Add Category" class="btn btn-success btn-lg">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

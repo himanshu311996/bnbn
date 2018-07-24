@@ -1,0 +1,356 @@
+/*************************************
+    font-family : roboto-condensed
+    Greenish Blue : #34c6d3 (buttons links icons backgrounds )
+    Steel Gray : #41464B (Heading)
+    Blue Bayoux : #64707B (Paragraphs)
+    White : #fff (text with black backgroyund)
+    Black : #000
+*********************************/
+html,body{
+    height : 100%;
+}
+
+body{
+    font-family: "Roboto Condensed";
+}
+
+h3{
+    text-transform: uppercase;
+}
+p{
+    color : #64707b;
+    font-size:16px;
+    font-weight: 300;
+}
+
+.bg-parallex{
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/***********HOME SECTION**************/
+
+#home{
+    height : 100%;
+}
+
+#home-cover{
+    background-image: url('/images/bg-home.jpg');
+    width : 100%;
+    height : 100%;
+    /* background-repeat : no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center; */
+
+}
+
+#home-content-box{
+    height : 100%;
+    width : 100%;
+    display : table;
+}
+
+#home-content-box-inner{
+    display : table-cell;
+    vertical-align: middle;
+
+}
+
+#home-heading h3{
+    color : #ffff;
+    font-size: 55px;
+    font-weight: 700;
+    margin : 20px 0px 20px 0px;
+}
+
+/*******************Button General***************/
+.btn-general{
+    border-color: #ffff;
+    border-width : 2px;
+    border-radius : 0px;
+    padding: 12px 26px 12px 26px;
+    font-size: 20px;
+    font-weight:400;
+    text-transform: uppercase;
+}
+
+.btn-white{
+    color : #ffff;
+    border-color:#ffff;
+}
+
+.btn-white:hover,
+.btn-white:focus {
+    background-color: #ffff;
+    color : #41464B;
+}
+
+.btn-blue{
+    color : #34c6d3;
+    border-color:#34c6d3;
+}
+
+.btn-blue:hover,
+.btn-blue:focus {
+    background-color: #34c6d3;
+    color : #ffff;
+}
+
+/*==================================Content Generic=====================================*/
+
+.content-box{
+    padding : 60px 0px 60px 0px;
+}
+
+.content-title h3{
+    font-weight : 800;
+    font-size: 30px;
+    text-align : center;
+    margin : 0px 0px 30px 0px;
+}
+
+.content-title-underline{
+    height : 3px;
+    width : 30px;
+    background-color: #34c6d3;
+    margin: 0px auto 30px auto;
+}
+
+/*==================================Services=====================================*/
+
+.service-item{
+    padding : 30px 0px 30px 0px;
+    margin-bottom : 30px;
+    cursor: pointer;
+}
+
+.service-title-icon i{
+    color : #34c6d3;
+    float : left;
+    padding: 15px;
+    margin-right : 25px;
+    height : 75px;
+    width : 75px;
+    text-align : center;
+}
+
+.service-title-icon i:hover{
+    background-color : #34c6d3;
+    color:#ffff;
+}
+
+.service-item-title{
+    font-size:20px;
+    font-weight: 400;
+    margin : 0px 0px 10px 0px;
+}
+
+.service-item-desc p{
+    margin : 0px;
+    padding-left: 85px;
+}
+
+/*==================================About=====================================*/
+
+#about-content-box{
+    float : left;
+    height : 700px;
+}
+
+#about-content-box-outer{
+    height:100%;
+    width:100%;
+    display:table;
+}
+
+#about-content-box-inner{
+    display:table-cell;
+    vertical-align: middle;
+}
+
+#about .content-title h3{
+    text-align: left;
+}
+
+#about .content-title-underline{
+    margin : 0 0 30px 0;
+}
+
+#about-desc{
+    margin-bottom: 30px;
+}
+
+#about-bg-diagonal{
+    width : 60%;
+    height : 700px;
+    float : right;
+    background-image: url('/images/mm.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-left: 200px solid white;
+    border-top: 700px solid transparent;
+
+}
+
+/*=======================================Books=================================*/
+
+.row.no-gutters [class*=col-]{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.img-wrapper{
+    overflow: hidden;
+}
+
+.img-wrapper img{
+    transition:transform .5s ease; 
+}
+
+.img-wrapper img:hover{
+    transform:scale(1.5);
+}
+
+/****===============================Footer===========*/
+footer{
+    
+    background-color: #41464B;
+    padding-top  : 30px;
+    border-top: 5px solid rgba(0,0,0,0.1);
+}
+
+#contact-left h3{
+    color : #ffff;
+    font-size:27px;
+    font-weight: 700;
+}
+
+#contact-left p{
+    color : #ffff;
+    margin-bottom:30px;
+}
+
+#contact-info{
+    background-image: url('/images/world-map.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#contact address{
+    color : #ffff;
+}
+
+address strong,
+#phone-fax-email strong{
+    letter-spacing: 1px;
+
+}
+
+#contact-right h3{
+    color : #ffff;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+form .form-control{
+    background-color: transparent;
+    border-radius: 0px;
+    border-color:#fff;
+    font-size : 17px;
+    font-weight: 300;
+    padding : 8px 16px;
+    margin-bottom: 20px;
+    color : #ffff;
+}
+
+/*===================footer========================*/
+
+#footer-bottom{
+    background-color: rgba(0,0,0,0.1);
+    padding:30px 0px ;
+    margin-top: 60px;
+}
+
+#footer-copyrights p{
+    margin: 0px;
+    color: #ffff;
+}
+
+#footer-menu{
+    float : left;
+    color: #ffff;
+    font-size : 16px;
+    font-weight: 300;
+}
+
+#footer-menu ul{
+    list-style-type: none;
+    padding-left: 0px;
+    margin: 0px;
+}
+
+#footer-menu ul li{
+    display : inline-block;
+}
+
+#footer-menu ul li a{
+    color : #ffff;
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0px 10px;
+    text-decoration: none;
+}
+
+#footer-menu a:hover{
+    color : #34c6d3;
+}
+
+/*==============Navbar===============================*/
+
+.navbar-header a{
+    text-decoration: none;
+    color : #ffff;
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.navbar{
+    padding: 20px 0px;
+}
+
+.bookhub-top-nav{
+    background: rgba(0,0,0,0.7);
+    padding: 7px 0px;
+}
+
+/* .bookhub-navbar-wrapper{
+    
+} */
+
+.btnnav{
+    float: right;
+}
+
+
+
+.navbar-nav li a{
+    padding:20px;
+    color : #ffff;
+    font-weight: 700;
+    font-size:15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.navbar-nav li a:focus,
+.navbar-nav li a:hover{
+    background:none;
+    color:#34c6d3;
+}
+
+.bookhub-top-nav ul.navbar-nav li.active a{
+    color:#34c6d3;
+}
+/*===============================Sidenav=====================*/

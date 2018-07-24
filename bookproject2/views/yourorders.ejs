@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- Fonts Awesome -->
+        <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/animate/animate.css">
+        <!-- Magnific Popup -->
+       
+    <title>cart1</title>
+    <style>
+          .pp{
+        position: absolute;
+        left:-3000px;
+    }
+    body{
+        background-color:#eee;
+    }
+    </style>
+</head>
+<body>
+        
+    <%- include ./partials/navbar.ejs %>
+    <%- include ./partials/sidebar.ejs %>
+    
+    
+    <div class="container-fluid"  id="main" style="margin-top : 7%;margin-left:2%">
+                <!-- <div class="container"> -->
+                        <%- messages('message',locals) %>
+                    <!-- </div> -->
+                <a class="btn btn-info" href="/books">View Books</a>
+                <% if(username){ %>
+                    <div style="margin-left:10%;margin-right:10%;background-color:white;border:1px solid #aaa;border-radius : 6px;box-shadow: 3px 4px 5px 4px #D8BFD8;padding: 10px 20px">
+                            <% if(cart1.length) { %>
+                             <h3 style="font-family:'Roboto Condensed';font-size:26px; font-weight:bold;">MY CART</h3><br>
+                             <table class="table table-striped table-hover" style="border:1px solid #bbb;border-radius:12px;">
+                                 <tr>
+                                     <th>Image</th>
+                                     <th>Title</th>
+                                     <th>Price</th>
+                                     <th>Quantity</th>
+                                     <th></th>
+                                     <th>Subtotal</th>
+                                 </tr>
+                                 <% var total = 0 %>
+                                 <% for(var i = 0 ;i < cart1.length ; i++) { %>
+                                     <% var qty = parseFloat(cart1[i].qty); %>
+                                     <% var price =  parseFloat(cart1[i].pprice); %> 
+                                     <% var sub =  parseFloat(qty * price).toFixed(2); %>   
+                                     <% total = parseFloat(parseFloat(total) + parseFloat(qty * price)).toFixed(2); %>    <tr>
+                                         <td><img src="/bookimages/<%= cart1[i].img %>" alt="" height="80px" width="80px"></td>
+                                         <td><h4 style="font-family:'Roboto Condensed';"><%= cart1[i].title %></h4></td>
+                                         <td><h4 style="font-family:'Roboto Condensed';">Rs:/-&nbsp;<%= cart1[i].pprice %></h4></td>
+                                         <td><h4 style="font-family:'Roboto Condensed';"><%= cart1[i].qty %></h4></td>
+                                         <td><a href="/update/<%= cart1[i].bookid %>/<%= cart1[i].qty %>" style="color:blue;">&nbsp;+&nbsp;</a>
+                                             <a href="/updateminus/<%= cart1[i].bookid %>/<%= cart1[i].qty %>" style="color:blue;">&nbsp;-&nbsp;</a>
+                                             <a href="/updatecart/<%= cart1[i].bookid %>">&nbsp;Clear&nbsp;</a></td>
+                                         <td><h4 style="font-family:'Roboto Condensed';"><%= sub %></h4></td>
+                                     </tr>                   
+                                 <% } %>
+                                 <tr>
+                                         <td  colspan="6" align="right"><h4 style="font-family:'Roboto Condensed';"><b>Total :</b> <%= parseFloat(total).toFixed(2) %></h4></td>
+                                 </tr>
+         
+                             </table>
+                                      <% } else { %>
+                                         
+                                     <div class="well">
+                                         <h3>No Books Bought yet</h3>
+                                     </div>
+                             <% } %>
+                              
+                         </div>
+         
+              <%   } %>
+                
+            </div>
+            <script>
+            </script>
+</body>
+</html>

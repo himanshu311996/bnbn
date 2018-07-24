@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Fonts Awesome -->
+    <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/animate/animate.css">
+    <title>Old Book</title>
+    <style>
+        body{
+           
+            /* background-image: url('/bookimages/1.jpg'); */
+            background: #eee;
+        }
+    
+        .card{
+            box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+            transition:0.3s;
+        }
+        a:hover{
+        text-decoration: none;
+    
+    }
+    img:hover{
+        opacity:0.5;
+    }
+    .card:hover {
+        box-shadow: 0 16px 24px 0 rgba(0,0,0,0.2);
+    }
+    .card>.container {
+        padding: 2px 16px;
+    }
+        </style>
+</head>
+<body>
+    <%- include ./partials/navbar.ejs %>
+    <%- include ./partials/sidebar.ejs %>
+    
+    <div class="container-fluid" style="margin-top : 5%;" id="main">
+        
+  
+                <div class="row"  style="margin-left:7%; margin-right:7%">
+                  <%  if(items == 'Present') { %>
+                    <% for(var j = 0 ; j < books.length ; j++){ %>
+                        <div style="background-color:white;padding-top: 2%;
+                        " class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                            <div style="padding:10px; border:1px solid #eee;border-radius:10px;box-shadow:5px 3px 8px 6px rgba(20,23,28,.1)">
+                                <span><img height="150px" width="100%"  src="/bookimages/<%= books[j].image %>" alt=""></span>
+                                 <div  style="background-color:#ffff;margin-bottom:40px;padding-left:0px;padding:16px 16px;overflow:hidden;white-space: nowrap;font-size:small;text-overflow: ellipsis;">
+                                    <span style="line-height:2;text-transform: capitalize;font-size:18px;font-family:Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;color:black;"><%= books[j].title %></span>
+                                    <span style="color:#ccc;">
+                                       &nbsp; by&nbsp;
+                                    </span>
+
+                                    <span class="label label-info" ><%= books[j].author %></span><br>
+                                    <span style="line-height:2;color:#ccc;">MRP :<strike><i class="fa fa-inr"></i><%=  parseFloat(books[j].original_price).toFixed(2) %></strike>&nbsp;&nbsp;(Inclusive of all taxes)</span><br>
+                                    <span style="font-size:20px; color: red;"><%= parseFloat(books[j].sale_price).toFixed(2) %></span>&nbsp; &nbsp;
+                                    <span>
+                                            <% discount = parseFloat((parseFloat(books[j].original_price)- parseFloat(books[j].sale_price)) /parseFloat(books[j].original_price) * 100.00).toFixed(2) %>
+                                            <% dis = discount + "%" %>
+                                            <span style="border:1px solid #ccc; color : #ccc">
+                                                <%= dis %>
+                                            </span>
+                                    </span><br><br>
+                            <a class="btn btn-md btn-default" role="button" style="border-radius:8px;background-color:orange;color : white;" href="/oldbooks/<%= books[j].title%>/<%= books[j].id %>">View details</a>
+                                    
+                                </div>
+                            </div>
+                            <br><br>
+                        </div>
+                    <% } %>
+                    <% } else { %>
+                        <div class="well" style="margin-top:10px;background:white;padding:30px;    margin-top: 7%;">
+                            <h5 style="font-style:bold; margin-left: 10%;font-size:40px;"><b>No Books available in this category</b></h5>
+                            <button class="btn"style="background-color:#D8BFD8 ; color:white;padding: 12px 18px;margin-top: 5%;
+                            margin-left: 30%;" >Click to view other books</button>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+
+<%- include ./partials/modal_popup.ejs %>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>ViewBook</title>
+    <style>
+    body{
+        background:#eee;
+    }
+    </style>
+</head>
+<body>
+        <%- include ./partials/admin_navbar.ejs %>
+        <%- include ./partials/sidebar.ejs %><br><br>
+    <div class="container-fluid" style="margin-top: 5%;"id="main"> 
+            <div class="row">
+                    <div class="col-sm-12 col-sm-2 col-md-2 col-lg-2 ">
+                            <a href="/addbooks" class="btn btn-success btn-lg">Add a new Book</a>
+        
+                    </div>
+                    <div class="col-sm-12 col-sm-8 col-md-8 col-lg-8 ">
+                            <p style="border-radius: 80px; background: white; padding: 20px 15% 20px 15%;width: 100%;height: 30px;line-height: 2%;color: #484848;font-style: italic;font-weight: 600;">This section displays a list of books available in BookHub</p>
+                    </div>
+                </div><br><br>
+                <form action="/deletechecks" method="POST">
+                    <div class="row" style="margin-left:5%">
+                        <% for(var i=0 ; i<output.length ;i++){ %>
+                
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" style="margin-bottom:35px;margin-right:5%;height:400px; border:1px solid #eee;border-radius:10px;;box-shadow:5px 3px 8px 6px rgba(20,23,28,.1);height:400px; overflow-y:auto;background:white;">
+                                <div class="row">
+                                <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                                        <input type="checkbox" name="check" value="<%= output[i].id %>">
+                                <img class="img-thumbnail" width="200px" height="200px" src="/bookimages/<%= output[i].image %>" alt="image not display">
+                            </div>
+                            <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                                <h4>Book Id : <%= output[i].id %></h4>
+                            <h4>Category Name :  <%= output[i].category %> </h4>
+                            <h4><span style="color : red; font-weight: bold;">Book Title :</span>  <%= output[i].title %> </h4>
+                            <h4>Language :  <%= output[i].language %> </h4>
+                            <h4>Author :  <%= output[i].author %> </h4>
+                            <h4>Publisher :  <%= output[i].publisher %> </h4>
+                            <h4>Description :  <%= output[i].de5scription %> </h4>
+                            <h4>Edition :  <%= output[i].edition %> </h4>
+                            <h4>Original Price :  <%= output[i].original_price %> </h4>
+                            <h4>Sale Price :  <%= output[i].sale_price %> </h4>
+                            <p><a class="btn btn-danger btn-sm" role="button" href="/single/<%= output[i].id %>/<%= output[i].image %>">Delete Book</a> <br><br>
+                                    <a class="btn btn-primary btn-sm" role="button" href="/updatebook/<%= output[i].id %>">Update Book</a> </p>               
+                            
+                            </div>
+                    </div>
+                    </div>
+                        <% } %>
+                    </div>
+        
+            <!-- <th></th>
+            <th>id</th>
+            <th>Category Name</th>
+            <th>Title of Book</th>
+            <th>Language</th>  
+            <th>Author</th>
+            <th>Publisher</th>
+            <th>Description</th>
+            <th>Edition</th>
+            <th>Original Price</th>
+            <th>Sale Price</th>
+            <th>Image</th>
+            <th>Delete Books</th>
+            <th>Update books</th>     
+   -->
+        <!-- <% for(var i=0 ; i<output.length ;i++){ %>
+            <tr>
+                <td><input type="checkbox" name="check" value="<%= output[i].id %>"></td>
+                <td><%= output[i].id %></td>
+                <td><%= output[i].title %></td>                
+                <td><%= output[i].category %></td>
+                <td><%= output[i].language %></td>
+                <td><%= output[i].author %></td>
+                <td><%= output[i].publisher %></td>
+                <td><%= output[i].description %></td>
+                <td><%= output[i].edition %></td>            
+                <td><%= output[i].original_price %></td>
+                <td><%= output[i].sale_price %></td>            
+                <td><a href="/single/<%= output[i].id %>">Delete Book</a></td>
+                <td><a href="/updatebook/<%= output[i].id %>">Update Book</a></td>
+             </tr>                        
+        <% } %> -->
+    
+<br><br>
+    <input type="submit" class="btn btn-danger btn-lg" value="Delete Books"><br><br>
+</form>
+</div>
+</body>
+</html>

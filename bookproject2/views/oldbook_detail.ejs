@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Fonts Awesome -->
+    <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/animate/animate.css">
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="/css/magnific-popup/magnific-popup.css">
+</head>
+<style>
+body{
+       
+       background-color:#eee;
+   }
+#bookimage:hover{
+    -ms-transform: scale(1.2); /* IE 9 */
+    -webkit-transform: scale(1.2); /* Safari 3-8 */
+    transform: scale(1.2); 
+    opacity: 0.9;
+
+}
+</style>
+<title>Home</title>
+<body>
+        <%- include ./partials/modal_popup.ejs %>
+        <div class="container" style="margin-top : 7%;" id="main">
+        <%- include ./partials/navbar.ejs %>
+        <%- include ./partials/sidebar.ejs %>        
+                
+                <div class="container">
+                            <%- messages('message',locals) %>
+                </div>
+                           
+                
+                        <div class="row" style="background-color:white;">
+                            <div class="col-xs-12 col-md-5" style="padding:6%;border-right:1px solid #eee;">
+                                    <img id="bookimage" src="/bookimages/<%= book.image %>" alt="No image" height="380" width="350">
+                            </div>
+                            <div class="col-xs-12 col-md-7" style="padding-left:5%;font-family: font-regular;">
+                                  
+                                    <h2 class="page-header" style="font-weight:bold;font-style:italics;"><%= book.title %></h2>
+                                    <span style="color:#ccc;">MRP :<strike> Rs.&nbsp;<%= parseFloat(book.original_price).toFixed(2) %> </strike>&nbsp;(Inclusive of all taxes)</span><br>
+                                    <span style="font-size: 20px; color: red;">Rs.<%= parseFloat(book.sale_price) %></span><br>  
+                                    <h4 style="font-size:15px; color:#666;">By&nbsp;<%= book.author %></h4>
+                                    
+                                    <h4 class="label label-info" style="font-size:15px; color:#fff;">&nbsp;<%= book.edition %> Edition</h4>
+                                    
+                                    <h4 style=" font-size: 16px;
+                                    color: #696969;
+                                    margin: 4% 0 4% 0;" 
+                                    >Description : &nbsp;<%= book.description %></h4>
+                                    <br><br><span style=" font-size: 15px;
+                                    color: #696969;"><i class="fa fa-shield">&nbsp;</i>BookHub Guarantee <br>
+                                        Trustpay: 100% Payment Protection. 7 Days Easy Return in case item is damaged, faulty or different from description</span>
+                                        <% if(username) { %>
+                                <h3>Contact Number : <%= book.contact_no %></h3>
+                                            
+                                        <% } else { %>
+                                            <div class="well">
+                                                <h3>Login to See Contact Details.</h3>
+                                            </div>
+                                        <% } %>
+                                        
+                            </div>
+
+                        </div>
+                    <br><br>
+                    </div>
+                </div>
+</body>
+</html>

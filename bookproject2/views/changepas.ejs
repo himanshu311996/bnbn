@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- Fonts Awesome -->
+        <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/animate/animate.css">
+        <style>
+                body{
+                    
+                    background-color:#eee;
+                }
+        </style>
+</head>
+<body>
+        <%- include ./partials/navbar.ejs %>
+        <%- include ./partials/sidebar.ejs %><br><br>
+
+<div class="container-fluid" id="main" style="margin-top:5%; " >
+        <div class="container">
+                <%- messages('message',locals) %>            
+        </div>
+                <form style="margin-left: 15%; margin-right:15%;border:1px solid #ac8ece; padding:30px; border-radius : 6px;box-shadow: 3px 4px 5px 4px #D8BFD8;background: white;" action="/submitchangepass" method="POST">
+                    <div class="form-group">
+                        <label for="password">Old Password</label>
+                        <input style="color:black;border: 1px solid #eee;
+                        border-radius: 5px;" type="password" class="form-control"  name="oldpassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">New Password</label>
+                        <input style="color:black;border: 1px solid #eee;
+                        border-radius: 5px;" type="password" class="form-control" name="newpassword" required>
+                    </div>
+                    <div class="form-group">
+                            <label for="password">Retype Password</label>
+                            <input style="color:black;border: 1px solid #eee;
+                            border-radius: 5px;" type="password" class="form-control" name="retypepassword" required>
+                        </div>
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn" style="background: linear-gradient(135deg,#ac8ece,#79589f); color: #fff">
+                    </div>
+                </form>
+    </div> 
+
+</body>
+</html>

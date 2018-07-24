@@ -1,0 +1,60 @@
+
+<style>
+    ul li a:hover{
+        
+        color:black;
+    }
+</style>
+<header>
+        <nav id = "header" class="navbar bookhub-top-nav navbar-fixed-top"  style="background-color: rgba(0,0,0,0.7);" role="navigation">
+            <div class="container-fluid">
+                <div class="bookhub-navbar-wrapper">
+                    <div class="navbar-header">
+                        <a  class="navbar-toggle collapsed icon" data-toggle="collapse" data-target="#bookhub-menu">
+                                &#9776;                      
+                        </a>
+                        <a style="color:white;" class="navbar-brand" href="/">BoOKHuB</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bookhub-menu">
+                        <ul class="nav navbar-nav">
+                            <li style="color:white; cursor: pointer;"><a style="color:white;" onclick="openNav()"><i class="fa fa-server"></i>&nbspCategories</a></li>
+                            
+                        </ul>
+                    <ul class="nav navbar-nav btnnav navbar-right">
+                                    <li class="dropdown">
+                                              <a style="color:white;" class="dropdown-toggle" data-toggle="dropdown" href="#">Category
+                                              <span class="caret"></span></a>
+                                              <ul class="dropdown-menu">
+                                                <li><a href="addcategory">Add</a></li>
+                                                <li><a href="viewcat">View</a></li>
+                                              </ul>
+                                      </li>
+                                      <li class="dropdown">
+                                        <a style="color:white;" class="dropdown-toggle" data-toggle="dropdown" href="#">Books
+                                        <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                          <li><a href="addbooks">Add</a></li>
+                                          <li><a href="viewbooks">View</a></li>
+                                        </ul>
+                                      </li>
+                                      <li class="dropdown">
+                                              <a class="dropdown-toggle" style="color:white;" data-toggle="dropdown" href="#">Users
+                                              <span class="caret"></span></a>
+                                              <ul class="dropdown-menu">
+                                                <li><a href="/viewuser">View Users</a></li>
+                                              </ul>
+                                      </li>
+                                      <li class="dropdown">
+                                              <a style="color:white;" class="dropdown-toggle" data-toggle="dropdown" href="#">Hi <%= username %>
+                                              <span class="caret"></span></a>
+                                              <ul class="dropdown-menu">
+                                                  <li><a href="">My Profile</a></li>
+                                                  <li><a href="/logout">Log Out</a></li>
+                                              </ul>
+                                      </li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>

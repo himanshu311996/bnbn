@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>View Users</title>
+    <style>
+            body{
+                
+                background-color:#eee;
+            }
+    </style>
+</head>
+<body>
+        <%- include ./partials/admin_navbar.ejs %>
+        <%- include ./partials/sidebar.ejs %>
+        
+    <div class="container-fluid" id="main" style="margin-top:4%;">
+            <div class="row" style="margin-bottom:2%;">
+                    <div class="col-sm-12 col-sm-offset-1  col-md-offset-1  col-lg-offset-1  col-sm-8 col-md-8 col-lg-8 ">
+                            <p id="rcorners1" style="border-radius: 80px;background: #eeeeee;           padding: 20px;width: 100%;height: 30px;line-height:2%; color:#484848;font-weight:600; 
+                            ">This provides an insight for all active users on Book Hub</p>
+                    </div>
+                </div>
+        <form action="/deletecheckusers" method="POST">
+        <table class="table table-striped table-hover" width="100%" height="100px" cellspacing = "7px" cellpadding = "8px">
+                <thead style="text-transform:uppercase;background-color: #337ab7;color: white;"><tr>
+                        <th>Select</th>
+                        <th>User Email</th>
+                        <th>UserName</th>
+                        <th>User Password</th>
+                        <th>For Delete User</th>                
+                    </tr></thead>
+                    <tbody>
+            <% for(var i=0 ; i<users.length ;i++){ %>
+                    <tr>
+                        <td><input type="checkbox" name="check" value="<%= users[i].email %>"></td>
+                        <td><%= users[i].email %></td>
+                        <td><%= users[i].username %></td>
+                        <td><%= users[i].password %></td> 
+                        <td><a class="btn btn-danger" href="deleteuser/<%= users[i].email %>">Delete User</a></td>
+                     </tr>                        
+                <% } %>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-danger">Delete User</button>
+    </form>
+    </div>
+    <script>
+            $('tbody').sortable({
+                items : "tr:not('.home')",
+                placeholder : "ui-state-highlight",
+                update : function(){
+                    var ids = $('tbody').sortable("serialize");
+                    
+                }
+            });
+        </script>
+</body>
+</html>

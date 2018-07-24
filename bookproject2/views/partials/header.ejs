@@ -1,0 +1,40 @@
+<nav class="navbar navbar-inverse" style="background:rgba(0,0,0,0.7)">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/books"><span style="color : white;">Book Hub</span></a>
+          </div>
+          <ul class="nav navbar-nav">
+          <li class="dropdown">
+                    <a class="dropdown-toggle"  style="color : #ffff;" data-toggle="dropdown" href="#">Category
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="addcategory">Add</a></li>
+                      <li><a href="viewcat">View</a></li>
+                    </ul>
+            </li>
+            <li class="dropdown" >
+              <a class="dropdown-toggle" style="color : #ffff;" data-toggle="dropdown" href="#">Books
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="addbooks">Add</a></li>
+                <li><a href="viewbooks">View</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+                    <a class="dropdown-toggle" style="color : #ffff;" data-toggle="dropdown" href="#">Users
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/viewuser">View Users</a></li>
+                    </ul>
+            </li>
+            <li class="dropdown">
+                    <a class="dropdown-toggle" style="color : #ffff;" data-toggle="dropdown" href="#"><%= data %>
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/logout">Log Out</a></li>
+                    </ul>
+            </li>
+          </ul>
+
+        </div>
+      </nav>
